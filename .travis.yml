@@ -15,9 +15,7 @@ script:
 # build image
 - docker build -t erikdevries/rpi-couchpotato .
 # run and test image
-- docker run -p 5050:5050 -d erikdevries/rpi-couchpotato
-- sleep 15
-- curl -vsf 'http://localhost:5050' &> /dev/stdout
+- docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
 
 after_success:
 # push image
