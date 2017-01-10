@@ -1,4 +1,4 @@
-FROM container4armhf/armhf-alpine
+FROM hypriot/rpi-alpine
 MAINTAINER Erik de Vries <docker@erikdevries.nl>
 
 RUN apk -U update && \
