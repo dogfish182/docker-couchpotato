@@ -1,5 +1,7 @@
 # Dockerfile to set up Couchpotato on ARM based systems
 
+[![Build Status](https://travis-ci.org/edv/docker-arm-couchpotato.svg?branch=master)](https://travis-ci.org/edv/docker-arm-couchpotato)
+
 The main goal of this Dockerfile is to easily set up Couchpotato using Docker on the Raspberry Pi 2/3 (or any compatible ARM chipset).
 
 ## Quick setup
