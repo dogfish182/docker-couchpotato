@@ -14,14 +14,14 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - docker build -t erikdevries/rpi-couchpotato .
-# test image
-#-
+# run and test image
+- docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
+
+after_success:
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    TAG=latest
-    docker tag erikdevries/rpi-couchpotato erikdevries/rpi-couchpotato:$TAG
-    docker push erikdevries/rpi-couchpotato:$TAG
+    docker tag erikdevries/rpi-couchpotato erikdevries/rpi-couchpotato:latest
     docker push erikdevries/rpi-couchpotato
   fi
