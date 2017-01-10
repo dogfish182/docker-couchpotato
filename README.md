@@ -16,7 +16,7 @@ The command above runs the Docker image and sets a couple of custom paths.
     * `e.g. /home/pi/couchpotato/data`
 * /movies should point to the location where CouchPotato should move downloaded movies to (e.g. a folder/nfs share on the host)
     * `e.g. /mnt/movies`
-* /download should point to the location where (e.g. sabnzbd) downloads movies to be processed by CouchPotato (e.g. a folder/nfs share on the host)
+* /downloads should point to the location where (e.g. sabnzbd) downloads movies to be processed by CouchPotato (e.g. a folder/nfs share on the host)
     * `e.g. /mnt/downloads`
 * /etc/localtime points to locale of the host, this is optional but might come in handy when you configured a custom locale
     * `e.g. /etc/localtime:ro`
