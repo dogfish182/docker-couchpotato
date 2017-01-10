@@ -1,12 +1,21 @@
 sudo: required
+
 services:
 - docker
+
 language: bash
+
+branches:
+  only:
+  - master
+
 script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
 - docker build -t erikdevries/rpi-couchpotato .
+# test image
+#-
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
