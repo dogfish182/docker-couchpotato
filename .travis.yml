@@ -8,11 +8,11 @@ script:
 # build image
 - docker build -t erikdevries/rpi-couchpotato .
 # push image
-#- >
-#  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-#    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-#    TAG=latest
-#    docker tag erikdevries/rpi-couchpotato erikdevries/rpi-couchpotato:$TAG
-#    docker push erikdevries/rpi-couchpotato:$TAG
-#    docker push erikdevries/rpi-couchpotato
-#  fi
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    TAG=latest
+    docker tag erikdevries/rpi-couchpotato erikdevries/rpi-couchpotato:$TAG
+    docker push erikdevries/rpi-couchpotato:$TAG
+    docker push erikdevries/rpi-couchpotato
+  fi
