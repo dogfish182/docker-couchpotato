@@ -8,6 +8,8 @@ The main goal of this Dockerfile is to easily set up Couchpotato using Docker on
 
 `docker run -p 5050:5050 --name couchpotato -d -v /*custom_config_dir*:/config -v /*custom_data_dir*:/data -v /*movies_dir*:/movies -v /*download_dir*:/downloads -v /etc/localtime:/etc/localtime:ro erikdevries/rpi-couchpotato`
 
+Please use `erikdevries/couchpotato` when running on X86 hardware.
+
 ## More details
 
 The command above runs the Docker image and sets a couple of custom paths.
@@ -31,4 +33,4 @@ In the command above the image is pulled from Docker Hub. If you want to build t
 
 `docker build -t rpi-couchpotato .`
 
-Finally run the command in `quick setup` but replace `erikdevries/rpi-couchpotato` with `rpi-couchpotato` 
+Finally run the command in `quick setup` but replace `erikdevries/rpi-couchpotato` with `rpi-couchpotato` or `couchpotato`
