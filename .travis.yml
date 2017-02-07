@@ -12,17 +12,21 @@ branches:
 script:
   # Build X86 docker image
   - docker build -f ./x86/Dockerfile -t erikdevries/couchpotato .
-  - docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/couchpotato --version
+  - docker run -it --entrypoint=/usr/bin/python erikdevries/couchpotato --version
   # Build ARM docker image
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -f ./arm/Dockerfile -t erikdevries/rpi-couchpotato .
-  - docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
+  - docker run -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
 
 after_success:
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
+    docker tag erikdevries/couchpotato erikdevries/couchpotato:latest
+    docker push erikdevries/couchpotato
+
     docker tag erikdevries/rpi-couchpotato erikdevries/rpi-couchpotato:latest
     docker push erikdevries/rpi-couchpotato
   fi
