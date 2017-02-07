@@ -10,12 +10,13 @@ branches:
   - master
 
 script:
-# prepare qemu
-- docker run --rm --privileged multiarch/qemu-user-static:register --reset
-# build image
-- docker build -t erikdevries/rpi-couchpotato .
-# run and test image
-- docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
+  # Build X86 docker image
+  - docker build -f ./x86/Dockerfile -t erikdevries/couchpotato .
+  - docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/couchpotato --version
+  # Build ARM docker image
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - docker build -f ./arm/Dockerfile -t erikdevries/rpi-couchpotato .
+  - docker run -p 5050:5050 -it --entrypoint=/usr/bin/python erikdevries/rpi-couchpotato --version
 
 after_success:
 # push image
