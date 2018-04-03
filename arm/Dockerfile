@@ -8,6 +8,7 @@ RUN apk -U update && \
         python \
         py-openssl \
         py-lxml \
+	unrar \
     && \
     git clone --depth 1 https://github.com/CouchPotato/CouchPotatoServer.git /CouchPotato && \
     rm -rf /tmp/src && \
